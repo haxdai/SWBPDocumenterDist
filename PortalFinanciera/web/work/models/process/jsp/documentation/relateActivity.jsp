@@ -29,12 +29,11 @@
 <%@page import="org.semanticwb.process.documentation.model.SectionElement"%>
 <%@page import="org.semanticwb.process.documentation.model.DocumentSectionInstance"%>
 <%@page import="org.semanticwb.SWBPlatform"%>
-<%@page import="org.semanticwb.process.documentation.resources.utils.SWPUtils"%>
 <%@page import="org.semanticwb.model.WebSite"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute(SWPUtils.PARAM_REQUEST);
+    SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute(SWPDocumentationResource.PARAM_REQUEST);
 
     String uridsi = request.getParameter("uridsi") != null ? request.getParameter("uridsi").toString() : "";
     String urise = request.getParameter("urise") != null ? request.getParameter("urise").toString() : "";
@@ -161,7 +160,7 @@
                 <input type="hidden" name="uridsi" value="<%= uridsi%>">
                 <input type="hidden" name="urise" value="<%= urise%>">
                 <a class="btn btn-default fa fa-mail-reply" data-dismiss="modal"> <%=paramRequest.getLocaleString("btnCancel")%></a>
-                <button type="submit" onclick="saveSE('formra', '', 'modalDialog');
+                <button type="submit" onclick="saveSE('formra', '', 'modalDialog', true);
                         return  false;" class="btn btn-default fa fa-save"> <%=paramRequest.getLocaleString("btnSave")%></button>
             </div>
         </form>

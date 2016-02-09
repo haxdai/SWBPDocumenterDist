@@ -133,13 +133,13 @@ if (itTemplateCont == null || !itTemplateCont.hasNext())  {
         <%
             if (showWord) {
                 %>
-        <li>
-            <a
+                <li>
+                    <a
                         onclick="downloadVersion('<%= SWPDocumentationResource.FORMAT_WORD%>')"
-                class="btn btn-default swbp-btn-action" data-toggle="tooltip" data-placement="bottom" data-original-title="<%=paramRequest.getLocaleString("lblVersionDownloadW")%>" title="<%=paramRequest.getLocaleString("lblVersionDownloadW")%>">
-                <span class="fa fa-file-word-o"></span>
-            </a>
-        </li>
+                        class="btn btn-default swbp-btn-action" data-toggle="tooltip" data-placement="bottom" data-original-title="<%=paramRequest.getLocaleString("lblVersionDownloadW")%>" title="<%=paramRequest.getLocaleString("lblVersionDownloadW")%>">
+                        <span class="fa fa-file-word-o"></span>
+                    </a>
+                </li>
                 <%
             }
         %>
@@ -491,11 +491,10 @@ if (itTemplateCont == null || !itTemplateCont.hasNext())  {
     tinymce.init({
         selector: 'textarea.freetext',
         entity_encoding : "raw",
-
+        save_enablewhendirty: false,
         language: '<%=paramRequest.getUser().getLanguage()%>',
         toolbar: "save | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | undo redo code | forecolor backcolor emoticons ",
         menubar: false,
-        save_enablewhendirty: true,
         force_br_newlines: true,
         paste_data_images: true,
         force_p_newlines: true,
@@ -524,8 +523,6 @@ if (itTemplateCont == null || !itTemplateCont.hasNext())  {
                 }
             });
         }
-
-
     });
     $(document).ready(function() {
         if (location.hash.slice(1) !== '' && $('#dsitab' + location.hash.slice(1)).length) {

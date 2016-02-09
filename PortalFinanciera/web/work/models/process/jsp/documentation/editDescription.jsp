@@ -18,17 +18,15 @@
 <%
     SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute("paramRequest");
     String urise = request.getParameter("urise") != null ? request.getParameter("urise") : "";
-   
     String uridsi = request.getParameter("uridsi") != null ? request.getParameter("uridsi") : "";
     String idp = request.getParameter("idp") != null ? request.getParameter("idp") : "";
-
     SectionElement sei = (SectionElement) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(urise);
     SWBResourceURL urlEditor = paramRequest.getActionUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setAction(SWPDocumentationResource.ACTION_EDIT_DESCRIPTION).setParameter("urise", urise);
     urlEditor.setParameter("uridsi", uridsi);
     urlEditor.setParameter("idp", idp);
     WebPage wpage = paramRequest.getWebPage();
     DocumentSectionInstance dsi = (DocumentSectionInstance) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(uridsi);
-    SWBResourceURL urlUpload = paramRequest.getActionUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setAction(SWPDocumentationResource.ACTION_UPLOAD_PICTURE).setParameter("urise", sei.getEncodedURI());
+    SWBResourceURL urlUpload = paramRequest.getActionUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setAction(SWPDocumentationResource.ACTION_UPLOAD_PICTURE).setParameter("urise", java.net.URLEncoder.encode(urise, "UTF-8"));
 
 %>
 <div class="modal-dialog">
@@ -44,6 +42,7 @@
                         <%= sei.getDescription() != null ? sei.getDescription() : ""%>
                     </textarea>
                 </div>
+                    <input type="hidden" id="urise" name="urise" value="<%=urise%>">
             </form>
         </div>
     </div>
@@ -51,6 +50,8 @@
 <script type="text/javascript">
     tinymce.init({
         selector: 'textarea',
+        entity_encoding : "raw",
+        save_enablewhendirty: false,
         language: '<%=paramRequest.getUser().getLanguage()%>',
         toolbar: "save | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table | undo redo code | forecolor backcolor emoticons ",
         menubar: false,

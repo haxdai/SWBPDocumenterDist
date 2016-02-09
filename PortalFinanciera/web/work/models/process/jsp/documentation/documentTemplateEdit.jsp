@@ -45,16 +45,16 @@
     <% 
     if (!act.equals("") && !act.equals(SWBResourceURL.Action_REMOVE)) {
         %>
-    showAlert('guardaCambios');
+        showAlert('guardaCambios');
         <%
         if (act.equals(SWBResourceURL.Action_ADD) || act.endsWith(SWPDocumentTemplateResource.ACTION_DUPLICATE_TEMPLATE)) {
             %>
-    appendTemplate('lgTemplates', '<%= templateCont.getId()%>', '<%= url.setParameter("uritc", uritc)%>', '<%= templateCont.getTitle()%>');
+            appendTemplate('lgTemplates', '<%= templateCont.getId()%>', '<%= url.setParameter("uritc", uritc)%>', '<%= templateCont.getTitle()%>');
             window.location.hash = '#' + <%= templateCont.getId()%>;
             <%
         } else {
             %>
-    updateTitleTemplate('<%= templateCont.getTitle()%>', '<%= templateCont.getId()%>');
+            updateTitleTemplate('<%= templateCont.getTitle()%>', '<%= templateCont.getId()%>');
             <%
         }
     }
@@ -69,28 +69,28 @@
             <%
             if (null != docTemplate) { // Si es edición, mostrar acciones de Template
                 %>
-            <div class="pull-right">                
-                <a class="btn btn-sm btn-success fa fa-plus" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnAddSection")%>" title="<%=paramRequest.getLocaleString("btnAddSection")%>"
-                   onclick="showModal('<%= url.setMode(SWPDocumentTemplateResource.MODE_EDIT_DOCUMENT_SECTION).setParameter("uritc", templateCont.getURI())%>', '<%=paramRequest.getLocaleString("btnAddSection")%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                </a>
-                <a id="acdte<%= templateCont.getId()%>"
-                   class="btn btn-sm btn-success fa fa-sort-numeric-desc" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnVersion")%>" title="<%=paramRequest.getLocaleString("btnVersion")%>"
-                   onclick="showModal('<%= viewVersion.setParameter("uritc", docTemplate.getTemplateContainer().getURI())%>', '<%= docTemplate.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                </a>
-                
-                <a class="btn btn-sm btn-success fa fa-copy" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnCloneTemplate")%>" title="<%=paramRequest.getLocaleString("btnCloneTemplate")%>"
-                   onclick="showModal('<%= urlDuplicate.setParameter("uritc", docTemplate.getTemplateContainer().getURI()) %>', '<%= docTemplate.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                </a>
-                
-                <a class="btn btn-sm btn-success fa fa-info-circle" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnInfo")%>" title="<%=paramRequest.getLocaleString("btnInfo")%>"
-                   onclick="showModal('<%= viewLog.setParameter("uritc", templateCont.getURI())%>', '<%= templateCont.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                </a>
-                <a class="btn btn-sm btn-success fa fa-trash-o" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnDelete")%>" title="<%=paramRequest.getLocaleString("btnDelete")%>"
-                   onclick="if (!confirm('<%=paramRequest.getLocaleString("msgDeletePrompt")%> <%= templateCont.getTitle()%>?'))
-                               return false;
-                           documenterPost('<%= action.setAction(SWBResourceURL.Action_REMOVE).setParameter("uritc", templateCont.getURI())%>', 'container', 'litc<%= templateCont.getId()%>');">
-                </a>
-            </div>
+                <div class="pull-right">                
+                    <a class="btn btn-sm btn-success fa fa-plus" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnAddSection")%>" title="<%=paramRequest.getLocaleString("btnAddSection")%>"
+                       onclick="showModal('<%= url.setMode(SWPDocumentTemplateResource.MODE_EDIT_DOCUMENT_SECTION).setParameter("uritc", templateCont.getURI())%>', '<%=paramRequest.getLocaleString("btnAddSection")%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                    </a>
+                    <a id="acdte<%= templateCont.getId()%>"
+                       class="btn btn-sm btn-success fa fa-sort-numeric-desc" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnVersion")%>" title="<%=paramRequest.getLocaleString("btnVersion")%>"
+                       onclick="showModal('<%= viewVersion.setParameter("uritc", docTemplate.getTemplateContainer().getURI())%>', '<%= docTemplate.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                    </a>
+
+                    <a class="btn btn-sm btn-success fa fa-copy" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnCloneTemplate")%>" title="<%=paramRequest.getLocaleString("btnCloneTemplate")%>"
+                       onclick="showModal('<%= urlDuplicate.setParameter("uritc", docTemplate.getTemplateContainer().getURI()) %>', '<%= docTemplate.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                    </a>
+
+                    <a class="btn btn-sm btn-success fa fa-info-circle" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnInfo")%>" title="<%=paramRequest.getLocaleString("btnInfo")%>"
+                       onclick="showModal('<%= viewLog.setParameter("uritc", templateCont.getURI())%>', '<%= templateCont.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                    </a>
+                    <a class="btn btn-sm btn-success fa fa-trash-o" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnDelete")%>" title="<%=paramRequest.getLocaleString("btnDelete")%>"
+                       onclick="if (!confirm('<%=paramRequest.getLocaleString("msgDeletePrompt")%> <%= templateCont.getTitle()%>?'))
+                                   return false;
+                               documenterPost('<%= action.setAction(SWBResourceURL.Action_REMOVE).setParameter("uritc", templateCont.getURI())%>', 'container', 'litc<%= templateCont.getId()%>');">
+                    </a>
+                </div>
                 <%
             }
             %>
@@ -118,41 +118,41 @@
                     <%
                     if (null == processes || processes.isEmpty()) { //Si no hay procesos 
                         %>
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <strong>Aviso!</strong> No hay procesos para asociar a la plantilla
-                    </div>
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <strong>Aviso!</strong> No hay procesos para asociar a la plantilla
+                        </div>
                         <%
                     } else { // Mostrar los procesos 
                         %>
-                    <select multiple="multiple" size="5" name="procesess" class="demo2">
+                        <select multiple="multiple" size="5" name="procesess" class="demo2">
                         <%
                         for (Process process : processes) {
-                                String titleProcess = process.getTitle();
+                            String titleProcess = process.getTitle();
                             String uriProcess = process.getURI();
                             %>    
-                        <option value="<%= uriProcess%>" <% if (templateCont != null && templateCont.hasProcess(process)) { %> selected="true" <% }%>> <%= titleProcess%></option>
+                            <option value="<%= uriProcess%>" <% if (templateCont != null && templateCont.hasProcess(process)) { %> selected="true" <% }%>> <%= titleProcess%></option>
                             <%
                         }
                         %>
-                    </select>
-                    <script type="text/javascript">
-                        var demo2 = $('.demo2').bootstrapDualListbox({
-                            nonSelectedListLabel: 'Por asignar',
-                            selectedListLabel: 'Asignados',
-                            infoTextEmpty: 'No hay procesos',
-                            filterTextClear: 'Mostrar todos',
-                            preserveSelectionOnMove: 'moved',
-                            infoTextFiltered: '{0} de {1}',
-                            infoText: 'Total {0}',
-                            moveSelectedLabel: 'Agregar seleccionado',
-                            moveAllLabel: 'Agregar todos',
-                            removeSelectedLabel: 'Quitar seleccionado',
-                            removeAllLabel: 'Quitar todos',
-                            filterPlaceHolder: 'Filtrar',
-                            moveOnSelect: false
-                        });
-                    </script>
+                        </select>
+                        <script type="text/javascript">
+                            var demo2 = $('.demo2').bootstrapDualListbox({
+                                nonSelectedListLabel: 'Por asignar',
+                                selectedListLabel: 'Asignados',
+                                infoTextEmpty: 'No hay procesos',
+                                filterTextClear: 'Mostrar todos',
+                                preserveSelectionOnMove: 'moved',
+                                infoTextFiltered: '{0} de {1}',
+                                infoText: 'Total {0}',
+                                moveSelectedLabel: 'Agregar seleccionado',
+                                moveAllLabel: 'Agregar todos',
+                                removeSelectedLabel: 'Quitar seleccionado',
+                                removeAllLabel: 'Quitar todos',
+                                filterPlaceHolder: 'Filtrar',
+                                moveOnSelect: false
+                            });
+                        </script>
                         <%
                     }
                     %>
@@ -165,78 +165,78 @@
             </div> 
             <hr/>
             <%
-                if (docTemplate != null) {
-                    Iterator<DocumentSection> itds = SWBComparator.sortSortableObject(docTemplate.listDocumentSections());
-                    if (itds.hasNext()) {
-            %>
-            <div class="table-responsive">
-                <table class="table table-hover swbp-table">
-                    <thead>
-                        <tr>
-                            <th><%=paramRequest.getLocaleString("lblSecActive")%></th>
-                            <th><%=paramRequest.getLocaleString("lblSecTitle")%></th>
-                            <th><%=paramRequest.getLocaleString("lblSecType")%></th>
-                            <th style="width: 100px;"><%=paramRequest.getLocaleString("lblSecOrder")%></th>
-                            <th><%=paramRequest.getLocaleString("lblActions")%></th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbSections">
-                        <%
+            if (docTemplate != null) {
+                Iterator<DocumentSection> itds = SWBComparator.sortSortableObject(docTemplate.listDocumentSections());
+                if (itds.hasNext()) {
+                    %>
+                    <div class="table-responsive">
+                        <table class="table table-hover swbp-table">
+                            <thead>
+                                <tr>
+                                    <th><%=paramRequest.getLocaleString("lblSecActive")%></th>
+                                    <th><%=paramRequest.getLocaleString("lblSecTitle")%></th>
+                                    <th><%=paramRequest.getLocaleString("lblSecType")%></th>
+                                    <th style="width: 100px;"><%=paramRequest.getLocaleString("lblSecOrder")%></th>
+                                    <th><%=paramRequest.getLocaleString("lblActions")%></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbSections">
+                            <%
                             while (itds.hasNext()) {
                                 DocumentSection docSection = itds.next();
                                 String titleds = docSection.getTitle();
                                 String typeds = docSection.getSectionType().getDisplayName(lang);
                                 String urids = docSection.getURI();
-                        %>
-                        <tr id="trds<%= docSection.getId()%>">
-                            <td class="swbp-icon-center">
-                                <input <%if (docSection.isActive()) {%>checked="true"<%}%> name="<%= urids%>" id="<%= urids%>" type="checkbox">
-                            </td>
-                            <td><%= titleds%></td>
-                            <td><%= typeds%></td>
-                            <td class="swbp-icon-center"><input type="number" value="<%= docSection.getIndex()%>" name="ind<%= docSection.getURI()%>" class="form-control"/></td>
-                            <td class="swbp-actions">
-                                <a class="btn btn-sm btn-default" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnEdit")%>" title="<%=paramRequest.getLocaleString("btnEdit")%>" 
-                                   onclick="showModal('<%=urleds.setParameter("urids", urids)%>', '<%=docSection.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                                    <span class=" fa fa-pencil"></span>
-                                </a>
-                                <a class="btn btn-sm btn-default"rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnDelete")%>" title="<%=paramRequest.getLocaleString("btnDelete")%>" 
-                                   onclick="if (!confirm('<%=paramRequest.getLocaleString("msgDeletePrompt")%>: <%=titleds%>?'))
-                                               return false;
-                                           deleteDocumentSection('<%= urlrds.setParameter("urids", docSection.getURI())%>', 'trds<%= docSection.getId()%>');
-                                           return false;">
-                                    <span class="fa fa-trash-o"></span>
-                                </a>
-                                <a class="btn btn-sm btn-default" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnInfo")%>" title="<%=paramRequest.getLocaleString("btnInfo")%>" 
-                                   onclick="showModal('<%= viewLog.setParameter("uritc", docSection.getURI())%>', '<%=docSection.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
-                                    <span class="fa fa-info-circle"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <%
+                                %>
+                                <tr id="trds<%= docSection.getId()%>">
+                                    <td class="swbp-icon-center">
+                                        <input <%if (docSection.isActive()) {%>checked="true"<%}%> name="<%= urids%>" id="<%= urids%>" type="checkbox">
+                                    </td>
+                                    <td><%= titleds%></td>
+                                    <td><%= typeds%></td>
+                                    <td class="swbp-icon-center"><input type="number" value="<%= docSection.getIndex()%>" name="ind<%= docSection.getURI()%>" class="form-control"/></td>
+                                    <td class="swbp-actions">
+                                        <a class="btn btn-sm btn-default" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnEdit")%>" title="<%=paramRequest.getLocaleString("btnEdit")%>" 
+                                           onclick="showModal('<%=urleds.setParameter("urids", urids)%>', '<%=docSection.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                                            <span class=" fa fa-pencil"></span>
+                                        </a>
+                                        <a class="btn btn-sm btn-default"rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnDelete")%>" title="<%=paramRequest.getLocaleString("btnDelete")%>" 
+                                           onclick="if (!confirm('<%=paramRequest.getLocaleString("msgDeletePrompt")%>: <%=titleds%>?'))
+                                                       return false;
+                                                   deleteDocumentSection('<%= urlrds.setParameter("urids", docSection.getURI())%>', 'trds<%= docSection.getId()%>');
+                                                   return false;">
+                                            <span class="fa fa-trash-o"></span>
+                                        </a>
+                                        <a class="btn btn-sm btn-default" rel="tooltip" data-original-title="<%=paramRequest.getLocaleString("btnInfo")%>" title="<%=paramRequest.getLocaleString("btnInfo")%>" 
+                                           onclick="showModal('<%= viewLog.setParameter("uritc", docSection.getURI())%>', '<%=docSection.getTitle()%>', '<%=paramRequest.getLocaleString("msgLoadingElement")%>', '<%=paramRequest.getLocaleString("msgLoadError")%>', 'modalDialog');">
+                                            <span class="fa fa-info-circle"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <%
                             }
-                        %>
-                    </tbody>
-                </table>
-            </div>
+                            %>
+                            </tbody>
+                        </table>
+                    </div>
                     <%
                 } else {
                     %>
-            <div class="form-group">
-                <div class="col-lg-8 col-lg-offset-3">
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <strong>Aviso!</strong> <%= paramRequest.getLocaleString("msgNoSections")%>
+                    <div class="form-group">
+                        <div class="col-lg-8 col-lg-offset-3">
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <strong>Aviso!</strong> <%= paramRequest.getLocaleString("msgNoSections")%>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
                     <%
                 }
             }
             %>
             <div class="form-group" id="guardaCambios"></div>
-            </div>
+        </div>
         <div class="panel-footer">
             <div class="row text-center">
                 <button type="button" class="btn btn-success" onclick="clearElement('container');">

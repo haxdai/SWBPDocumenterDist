@@ -68,6 +68,7 @@
             </div>
             <div class="col-lg-12" id="spSave">
             </div>
+                <input type="hidden" id="urise" name="urise">
             <div class="panel-footer">
                 <button type="submit" class="btn btn-default"><span class="fa fa-save"></span> Guardar</button>
             </div>
@@ -76,7 +77,9 @@
             function selectImage(element) {
                 var a = $('#' + element);
                  top.tinymce.activeEditor.windowManager.getParams().oninsert(window.location.origin + a.attr('src'), false);
-                //top.tinymce.activeEditor.windowManager.close();
+                 if(top.tinymce.activeEditor.id.indexOf('http') == 0){
+                 top.tinymce.activeEditor.windowManager.close();
+                 }
                 //top.tinymce.activeEditor.windowManager.getParams().oninsert(window.location.origin + '/work/models/<%= modelid%>/swp_DocumentationImage/' + element);
             }
             function uploadOk() {
@@ -84,9 +87,7 @@
                 return true;
             }
             $(document).ready(function() {
-                if(top.tinymce.activeEditor.id.indexOf('http') == 0){
-                $('#urise').val(top.tinymce.activeEditor.id);
-            }
+
                 $('#fupload').on('change', function() {
                     var file = this.files[0];
                     console.log(file);

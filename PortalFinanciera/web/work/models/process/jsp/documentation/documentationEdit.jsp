@@ -204,7 +204,7 @@
                         SWBResourceURL urlDownload = new SWBResourceURLImp(request, rd.getResource(), rd, SWBResourceModes.UrlType_RENDER);
                         urlDownload.setMode(ProcessFileRepository.MODE_GETFILE).setCallMethod(SWBResourceURL.Call_DIRECT).setParameter("fid", idfile);
                         urlDownload.setParameter("verNum", vi.getVersionNumber() + "");
-
+                        
                         listvi = re.listVersions();
                     %>
                     <input type="hidden" name="urire" value="<%= re.getURI()%>">

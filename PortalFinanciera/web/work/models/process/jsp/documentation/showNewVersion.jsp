@@ -4,13 +4,13 @@
     Author     : carlos.alvarez
 --%>
 
+<%@page import="org.semanticwb.process.documentation.resources.SWPDocumentationResource"%>
 <%@page import="org.semanticwb.process.documentation.resources.SWPUserDocumentationResource"%>
 <%@page import="org.semanticwb.portal.api.SWBResourceURL"%>
-<%@page import="org.semanticwb.process.documentation.resources.utils.SWPUtils"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    SWBParamRequest paramRequest = request.getAttribute(SWPUtils.PARAM_REQUEST) != null ? (SWBParamRequest) request.getAttribute(SWPUtils.PARAM_REQUEST) : null;
+    SWBParamRequest paramRequest = request.getAttribute(SWPDocumentationResource.PARAM_REQUEST) != null ? (SWBParamRequest) request.getAttribute(SWPDocumentationResource.PARAM_REQUEST) : null;
     String uridoc = request.getParameter("uridoc") != null ? request.getParameter("uridoc") : "";
     String uridi = request.getParameter("uridi") != null ? request.getParameter("uridi") : "";
     String idp = request.getParameter("idp") != null ? request.getParameter("idp") : "";

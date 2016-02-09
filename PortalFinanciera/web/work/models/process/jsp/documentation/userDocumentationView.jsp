@@ -62,11 +62,19 @@
         <%
     } else {
         %>
-                
-<!--                    <%
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default swbp-panel">
+                    <div class="panel-heading swbp-panel-title">
+                        <div class="panel-title">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h1 class="panel-title"><strong><%=process.getTitle()%></strong></h1>
+                                </div>
+                                <%
                                 if (isDocumenter) {
                                     %>
-                                   <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 swbp-breadcrumbs">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <form id="collapseOne" class="form-horizontal panel-collapse collapse" role="form">
                                             <input type="hidden" id="version" name="version">
                                             <input type="hidden" name="idp" value="<%= idp %>">
@@ -83,29 +91,19 @@
                                             %>
                                             </select>
                                         </form>
-                                            <strong id="lblTitle" class="text-center"><%=actualVersion != null ? (actualVersion.getTitle() != null ? actualVersion.getTitle() : "") : ""%></strong>
+                                        <strong id="lblTitle"><%=actualVersion != null ? (actualVersion.getTitle() != null ? actualVersion.getTitle() : "") : ""%></strong>
                                     </div>
-                                    <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-8 col-xs-12 swbp-raised-button">
-                                        <a id="collapseVersionButton" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="btn btn-block swbp-btn-block">
-                                            <%=paramRequest.getLocaleString("lblShowVersion")%>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <a id="collapseVersionButton" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="btn btn-success pull-right">
+                                            <span class="fa fa-sort-numeric-desc"></span><%=paramRequest.getLocaleString("lblShowVersion")%>
                                         </a>
-                                    </div>
                                     </div>
                                     <%
                                 }
-                    %>  -->
-                    
-                    <hr>
-                    <div class="panel panel-default swbp-panel-head">
-                    
-                                <div class="panel-heading text-center"><%=process.getTitle()%>
-                                    <div class="pull-right">
-                                        <a class="accordion-toggle fa fa-bars fa-lg" data-toggle="collapse" data-parent="#UniqueName" href="#SWBP-MENU-PROCESO"></a>  
-                                    </div>
-                                </div>
-                                
-                               
-                    
+                                %>
+                            </div>
+                        </div>
+                    </div>
                     <%
                     String filedoc = SWBPortal.getWorkPath() + "/models/" + paramRequest.getWebPage().getWebSiteId() + "/Resource/" + process.getId() + "/";
                     filedoc += actualVersion.getId() + "/" + process.getId() + ".html";
@@ -113,10 +111,12 @@
                     FileInputStream in = new FileInputStream(file);
                     out.print(SWBUtils.IO.readInputStream(in,"UTF-8"));
                     %>
+                </div>
+            </div>
+        </div>
         <%
     }
 %>
-                    </div>
 <script type="text/javascript">
     var winVar;
     $(document).ready(function() {

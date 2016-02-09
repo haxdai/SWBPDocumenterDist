@@ -15,11 +15,10 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="org.semanticwb.process.documentation.model.TemplateContainer"%>
 <%@page import="org.semanticwb.SWBPlatform"%>
-<%@page import="org.semanticwb.process.documentation.resources.utils.SWPUtils"%>
 <%@page import="org.semanticwb.portal.api.SWBParamRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute(SWPUtils.PARAM_REQUEST);
+    SWBParamRequest paramRequest = (SWBParamRequest) request.getAttribute(SWPDocumentTemplateResource.PARAM_REQUEST);
     String uritc = request.getParameter("uritc") != null ? request.getParameter("uritc").toString() : "";
     TemplateContainer tc = (TemplateContainer) SWBPlatform.getSemanticMgr().getOntology().getGenericObject(uritc);
     SWBResourceURL urlSave = paramRequest.getActionUrl().setCallMethod(SWBResourceURL.Call_DIRECT).setAction(SWPDocumentTemplateResource.ACTION_DUPLICATE_TEMPLATE).setParameter("uritc", uritc);
